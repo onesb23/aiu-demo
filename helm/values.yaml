@@ -1,0 +1,5 @@
+replicaCount: 1
+image:
+  name: nginx
+  tag: "latest"
+nameOverride: "aiu-test-default"

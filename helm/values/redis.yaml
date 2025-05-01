@@ -1,0 +1,5 @@
+replicaCount: 1
+image:
+  name: redis
+  tag: "latest"
+nameOverride: "aiu-redis"
