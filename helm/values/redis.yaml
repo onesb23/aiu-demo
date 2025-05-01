@@ -1,5 +1,5 @@
 replicaCount: 1
 image:
-  name: redis
+  name: docker.io/library/redis
   tag: "latest"
 nameOverride: "aiu-redis"
