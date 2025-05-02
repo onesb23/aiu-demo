@@ -1,8 +1,0 @@
-helm:
-  parameters:
-  - name: image.name
-    value: docker.io/nginx
-    forcestring: true
-  - name: image.tag
-    value: latest@sha256:c15da6c91de8d2f436196f3a768483ad32c258ed4e1beb3d367a27ed67253e66
-    forcestring: true
