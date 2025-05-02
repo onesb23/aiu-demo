@@ -5,9 +5,10 @@ metadata:
   namespace: argocd
   finalizers: null
   annotations:
-    argocd-image-updater.argoproj.io/image-list: nginx=docker.io/library/nginx:latest,redis=docker.io/library/redis:latest
-    argocd-image-updater.argoproj.io/nginx.write-back-target: "helmvalues:./values/nginx.yaml"
-    argocd-image-updater.argoproj.io/redis.write-back-target: "helmvalues:./values/redis.yaml"
+    #argocd-image-updater.argoproj.io/image-list: nginx=docker.io/library/nginx:latest,redis=docker.io/library/redis:latest
+    argocd-image-updater.argoproj.io/image-list: docker.io/library/redis:latest
+    #argocd-image-updater.argoproj.io/nginx.write-back-target: "helmvalues:./values/nginx.yaml"
+    argocd-image-updater.argoproj.io/write-back-target: "helmvalues:./values/redis.yaml"
     argocd-image-updater.argoproj.io/update-strategy: digest
 spec:
   project: default
