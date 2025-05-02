@@ -5,11 +5,13 @@ metadata:
   namespace: argocd
   finalizers: null
   annotations:
-    #argocd-image-updater.argoproj.io/image-list: nginx=docker.io/library/nginx:latest,redis=docker.io/library/redis:latest
-    argocd-image-updater.argoproj.io/image-list: docker.io/library/redis:latest
-    #argocd-image-updater.argoproj.io/nginx.write-back-target: "helmvalues:./values/nginx.yaml"
+    argocd-image-updater.argoproj.io/image-list: redis=docker.io/library/redis:latest
     argocd-image-updater.argoproj.io/write-back-target: "helmvalues:./values/redis.yaml"
+    argocd-image-updater.argoproj.io/write-back-method: git
+    argocd-image-updater.argoproj.io/redis.helm.image-name: image.name
+    argocd-image-updater.argoproj.io/redis.helm.image-tag: image.tag
     argocd-image-updater.argoproj.io/update-strategy: digest
+    argocd-image-updater.argoproj.io/git-repository: git@github.com:onesb23/aiu-demo.git
 spec:
   project: default
   sources:
