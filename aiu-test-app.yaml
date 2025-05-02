@@ -5,11 +5,15 @@ metadata:
   namespace: argocd
   finalizers: null
   annotations:
-    argocd-image-updater.argoproj.io/image-list: redis=docker.io/library/redis:latest
-    argocd-image-updater.argoproj.io/write-back-target: "helmvalues:./values/redis.yaml"
+    argocd-image-updater.argoproj.io/image-list: redis=docker.io/redis:latest,nginx=docker.io/nginx:latest
+    argocd-image-updater.argoproj.io/redis.write-back-target: "helmvalues:./values/redis.yaml"
+    argocd-image-updater.argoproj.io/nginx.write-back-target: "helmvalues:./values/nginx.yaml"
     argocd-image-updater.argoproj.io/write-back-method: git
+    #argocd-image-updater.argoproj.io/write-back-method: argocd
     argocd-image-updater.argoproj.io/redis.helm.image-name: image.name
     argocd-image-updater.argoproj.io/redis.helm.image-tag: image.tag
+    argocd-image-updater.argoproj.io/nginx.helm.image-name: image.name
+    argocd-image-updater.argoproj.io/nginx.helm.image-tag: image.tag
     argocd-image-updater.argoproj.io/update-strategy: digest
     argocd-image-updater.argoproj.io/git-repository: git@github.com:onesb23/aiu-demo.git
 spec:
@@ -33,24 +37,24 @@ spec:
   info:
   - name: 'Git path'
     value: 'https://github.com/onesb23/aiu-demo'
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: true
-    syncOptions:
-    - Validate=true
-    - CreateNamespace=true
-    - PrunePropagationPolicy=foreground
-    - PruneLast=true
-    - RespectIgnoreDifferences=true
-    - ApplyOutOfSyncOnly=true
-    retry:
-      limit: 3
-      backoff:
-        duration: 5s
-        factor: 2
-        maxDuration: 3m
+#  syncPolicy:
+#    automated:
+#      prune: true
+#      selfHeal: true
+#      allowEmpty: true
+#    syncOptions:
+#    - Validate=true
+#    - CreateNamespace=true
+#    - PrunePropagationPolicy=foreground
+#    - PruneLast=true
+#    - RespectIgnoreDifferences=true
+#    - ApplyOutOfSyncOnly=true
+#    retry:
+#      limit: 3
+#      backoff:
+#        duration: 5s
+#        factor: 2
+#        maxDuration: 3m
   ignoreDifferences:
   - group: apps
     kind: Deployment
