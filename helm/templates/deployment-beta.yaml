@@ -16,4 +16,6 @@ spec:
     spec:
       containers:
         - name: test
-          image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
+          {{- with (index .Values "myName") }}
+          image: "{{ .image.name }}:{{ .image.tag }}"
+          {{- end }}

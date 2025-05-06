@@ -5,14 +5,15 @@ metadata:
   namespace: argocd
   finalizers: null
   annotations:
-    argocd-image-updater.argoproj.io/image-list: redis=docker.io/redis:latest
-    argocd-image-updater.argoproj.io/write-back-target: "helmvalues:./values/redis.yaml"
-    argocd-image-updater.argoproj.io/write-back-method: git
-    #argocd-image-updater.argoproj.io/write-back-method: argocd
-    argocd-image-updater.argoproj.io/redis.helm.image-name: image.name
-    argocd-image-updater.argoproj.io/redis.helm.image-tag: image.tag
+    argocd-image-updater.argoproj.io/image-list: nginx=docker.io/nginx:latest,redis=docker.io/redis:latest
     argocd-image-updater.argoproj.io/update-strategy: digest
+    argocd-image-updater.argoproj.io/write-back-method: git
     argocd-image-updater.argoproj.io/git-repository: git@github.com:onesb23/aiu-demo.git
+    argocd-image-updater.argoproj.io/write-back-target: "helmvalues:./values/images.yaml"
+    argocd-image-updater.argoproj.io/nginx.helm.image-name: nginx.image.name
+    argocd-image-updater.argoproj.io/nginx.helm.image-tag: nginx.image.tag
+    argocd-image-updater.argoproj.io/redis.helm.image-name: redis.image.name
+    argocd-image-updater.argoproj.io/redis.helm.image-tag: redis.image.tag
 spec:
   project: default
   sources:
@@ -22,12 +23,14 @@ spec:
     helm:
       valueFiles:
       - values/nginx.yaml
+      - values/images.yaml
   - repoURL: https://github.com/onesb23/aiu-demo
     targetRevision: HEAD
     path: helm/
     helm:
       valueFiles:
       - values/redis.yaml
+      - values/images.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: default

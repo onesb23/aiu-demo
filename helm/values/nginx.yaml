@@ -1,5 +1,6 @@
 replicaCount: 1
-image:
-  name: docker.io/nginx
-  tag: "latest"
+myName: nginx
+#image:
+#  name: docker.io/nginx
+#  tag: latest
 nameOverride: "aiu-nginx"

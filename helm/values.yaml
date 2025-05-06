@@ -1,5 +1,6 @@
 replicaCount: 1
+myName: default
 image:
-  name: nginx
+  name: debian
   tag: "latest"
 nameOverride: "aiu-test-default"
