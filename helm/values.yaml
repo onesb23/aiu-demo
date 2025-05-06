@@ -1,6 +1,7 @@
 replicaCount: 1
-myName: default
-image:
-  name: debian
-  tag: "latest"
+myName: aiu_demo
+aiu_demo:
+  image:
+    name: debian
+    tag: "latest"
 nameOverride: "aiu-test-default"
