@@ -1,8 +1,8 @@
 nginx:
   image:
     name: docker.io/nginx
-     tag: latest
+    tag: latest
 redis:
   image:
     name: docker.io/redis
-     tag: latest
+    tag: latest
